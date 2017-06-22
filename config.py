@@ -1,0 +1,1 @@
+classesPerDay = 9

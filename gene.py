@@ -1,0 +1,9 @@
+import random as rand
+from sub import subject
+
+class gene:
+    def __init__(self,pairs):
+        self.genePairs={}
+        for pair in pairs:
+            self.genePairs[pair[0]]=(pair[1][0],pair[1][1])
+        self.geneScore=(1<<62)

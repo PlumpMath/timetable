@@ -3,7 +3,7 @@ from sub import subject
 
 class person:
     def __init__(self,name='',classes=[]):
-        self.name=name or 'Student '+str(random.randrange(100000,999999))
+        self.name=name or '학생 #'+str(random.randrange(100000,999999))
         if type(classes) is list:
             self.classes=classes
 

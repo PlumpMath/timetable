@@ -1,4 +1,4 @@
-import numpy,re,random,os,json
+import numpy,re,random,os,json,codecs
 import gene,user,genetools,jsonEncoder
 import data_io as dio
 from user import person
@@ -17,15 +17,19 @@ def main():
     matchDict=user.subjectMatchDict(people,subjects)
     scoreValues={"best":[],"worst":[]}
 
+    with codecs.open('result/'+runID+'/input.json', 'w', encoding="utf-8") as outfile:
+        json.dump({"subjects":subjects, "people":people}, outfile, indent=4, sort_keys=True, ensure_ascii=False)
+    
     for i in range(0,generations):
         print('Generation '+str(i+1))
         genelist,best,worst=genetools.generation(genelist,subjects,matchDict)
         scoreValues['best'].append(best)
         scoreValues['worst'].append(worst)
-        with open('result/'+runID+'/run_'+str(i+1)+'.json', 'w') as outfile:
-            json.dump(genelist, outfile, indent=4, sort_keys=True)
-    with open('result/'+runID+'/scores.json', 'w') as outfile:
-        json.dump(scoreValues, outfile, indent=4, sort_keys=True)
+        with codecs.open('result/'+runID+'/run_'+str(i+1)+'.json', 'w', encoding="utf-8") as outfile:
+            json.dump(genelist, outfile, indent=4, sort_keys=True, ensure_ascii=False)
+    
+    with codecs.open('result/'+runID+'/scores.json', 'w', encoding="utf-8") as outfile:
+        json.dump(scoreValues, outfile, indent=4, sort_keys=True, ensure_ascii=False)
 
 if __name__=='__main__':
     main()

@@ -1,4 +1,5 @@
 import random as rand
+import json
 from sub import subject
 
 class gene:

@@ -1,0 +1,22 @@
+{
+  "name": "timetable-front",
+  "version": "1.0.0",
+  "description": "front-end application for timetable planning",
+  "main": "start.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "simotion",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.5.6",
+    "express": "^4.15.3",
+    "express-session": "^1.15.3",
+    "fs-extra": "^3.0.1",
+    "i18n": "^0.8.3",
+    "morgan": "^1.8.2",
+    "pat": "0.0.1"
+  }
+}

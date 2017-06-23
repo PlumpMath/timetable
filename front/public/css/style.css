@@ -1,0 +1,21 @@
+body {
+  /*padding-top: 20px;*/
+  padding-bottom: 20px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+#content {
+  background-color: #000;
+}
+
+.div-runitem {
+  padding-bottom: 5px;
+}
+
+#div-chart {
+  display: block;
+  margin: 0 auto;
+}

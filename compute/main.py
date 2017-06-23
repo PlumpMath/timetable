@@ -31,5 +31,8 @@ def main():
     with codecs.open('result/'+runID+'/scores.json', 'w', encoding="utf-8") as outfile:
         json.dump(scoreValues, outfile, indent=4, sort_keys=True, ensure_ascii=False)
 
+    with codecs.open('result/'+runID+'/info.json', 'w', encoding="utf-8") as outfile:
+        outfile.write('{ \"runCount\": '+str(generations)+' }')
+
 if __name__=='__main__':
     main()

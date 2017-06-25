@@ -19,7 +19,7 @@ module.exports = {
                 fs.readFile('./../compute/result/'+id+'/scores.json', 'utf8', function (err, data3) {
                     if (err) throw err;
                     scores = JSON.parse(data3);
-                    callback(info,input,scores)
+                    callback(info,input,scores);
                 });
             });
         });

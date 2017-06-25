@@ -9,7 +9,7 @@ module.exports = function(app) {
   app.get('/run-list',function(req,res) {
     fileman.runList( function(files) {
       res.render('run-list', {
-        title: 'Run list',
+        title: '저장된 결과',
         files: files
       });
     });
@@ -17,7 +17,19 @@ module.exports = function(app) {
   app.get('/run-detail/:id',function(req,res) {
     fileman.runInfo(req.params.id, function(info,input,scores) {
       res.render('run-detail', {
-        title: 'Run detail: '+req.params.id,
+        title: '상세 정보: '+req.params.id,
+        id: req.params.id,
+        info: info,
+        input: input,
+        scores: scores
+      });
+    });
+  });
+  app.get('/run-input/:id',function(req,res) {
+    fileman.runInfo(req.params.id, function(info,input,scores) {
+      res.render('run-input', {
+        title: '입력 데이터: '+req.params.id,
+        id: req.params.id,
         info: info,
         input: input,
         scores: scores

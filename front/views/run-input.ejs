@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <%- include head.ejs %>
+  <script>var id='<%=id%>'</script>
+  <body>
+    <%- include nav.ejs %>
+    <div class="container">
+      <div class="container">
+        <div class="row row-menu">
+          <button type="button" class="btn btn-primary btn-list" onclick="location.href='/run-detail/<%=id%>'">< 돌아가기</button>
+        </div>
+        <div class="row">
+            <h1><%=title%></h1>
+        </div>
+        <p></p>
+        <div class="row">
+            <h3>수업</h3>
+        </div>
+        <div class="row">
+            <%for(var key of Object.keys(input['subjects'])) {%>
+                <table class="table table-bordered" id="c<%=input['subjects'][key]['id']%>" style="width: 50%;">
+                    <thead>
+                        <tr><th><%=input['subjects'][key]["name"]%></th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">ID</th>
+                            <td><%=input['subjects'][key]['id']%></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">수업 길이</th>
+                            <td><%=input['subjects'][key]['len']%></td>
+                        </tr>
+                    </tbody>
+                </table>
+            <%}%>
+        </div>
+        <p></p>
+        <div class="row">
+            <h3>학생</h3>
+        </div>
+        <div class="row">
+            <%for(var key of Object.keys(input['people'])) {%>
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                        <tr><th><%=input['people'][key]["name"]%></th><th></th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">수강 과목</th>
+                            <td>
+                                <%for(var cl of input['people'][key]['classes']) {%>
+                                    <a href="#c<%=cl%>"><%=input['subjects'][cl]["name"]%></a>&nbsp;
+                                <%}%>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <%}%>
+        </div>
+        <p></p>
+      </div>
+    </div>
+    <script src="/static/js/input-detail.js"></script>
+    <%- include tail.ejs %>
+  </body>
+</html>

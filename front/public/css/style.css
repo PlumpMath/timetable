@@ -19,3 +19,9 @@ body {
   display: block;
   margin: 0 auto;
 }
+.btn-list {
+  margin-right: 5px;
+}
+.row-menu {
+  margin-bottom: 10px;
+}

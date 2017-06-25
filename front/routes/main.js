@@ -2,9 +2,14 @@ var fileman = require('./../fileman.js')
 
 module.exports = function(app) {
   app.get('/',function(req,res) {
+    res.render('index', {
+      title: 'Hi'
+    });
+  });
+  app.get('/run-list',function(req,res) {
     fileman.runList( function(files) {
-      res.render('index', {
-        title: 'Hi',
+      res.render('run-list', {
+        title: 'Run list',
         files: files
       });
     });

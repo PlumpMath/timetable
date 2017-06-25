@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <%- include head.ejs %>
+  <body>
+    <div class="container">
+      <%- include nav.ejs %>
+      <div class="container">
+        <div class="row">
+            <h1>Saved Runs</h1>
+        </div>
+        <% if(files.length===0) { %>
+          <h4>Nothing yet!</h4>
+        <%}%>
+        <% for(i=0;i<files.length;i++) { %> 
+          <div class="div-runitem">
+            <button type="button" class="btn btn-primary" onclick="location.href='<%='/run-detail/'+files[i]%>';">Run <%=files[i]%></button>
+          </div>  
+        <%} %>
+      </div>
+    </div>
+    <%- include tail.ejs %>
+  </body>
+</html>

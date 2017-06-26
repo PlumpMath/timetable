@@ -26,7 +26,7 @@
   </script>
   <body>
     <%- include nav.ejs %>
-    <div class="container">
+    <div id="content" class="container">
       <div class="container">
         <div class="row row-menu">
           <button type="button" class="btn btn-primary btn-list" onclick="location.href=/run-list/">< 돌아가기</button>
@@ -37,13 +37,11 @@
             <h1><%=title%></h1>
         </div>
         <div class="row">
-            <div class="lead">세대 수: <%=info['runCount']%></div>
-        </div>
-        <div class="row">
-            <div class="lead">학생 수: <%=Object.keys(input['people']).length%></div>
-        </div>
-        <div class="row">
-            <div class="lead">수업 수: <%=Object.keys(input['subjects']).length%></div>
+            <div class="lead">
+              <p>세대 수: <%=info['runCount']%></p>
+              <p>학생 수: <%=Object.keys(input['people']).length%></p>
+              <p>수업 수: <%=Object.keys(input['subjects']).length%></p>
+            </div>
         </div>
         <p></p>
         <div class="row">

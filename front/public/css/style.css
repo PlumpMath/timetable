@@ -6,11 +6,6 @@ body {
 .navbar {
   margin-bottom: 20px;
 }
-
-#content {
-  background-color: #000;
-}
-
 .div-runitem {
   padding-bottom: 5px;
 }
@@ -24,4 +19,7 @@ body {
 }
 .row-menu {
   margin-bottom: 10px;
+}
+#content {
+  margin-top: 70px;
 }

@@ -20,6 +20,9 @@ def main():
     with codecs.open('result/'+runID+'/input.json', 'w', encoding="utf-8") as outfile:
         json.dump({"subjects":subjects, "people":people}, outfile, indent=4, sort_keys=True, ensure_ascii=False)
     
+    neverGood=True
+    firstGood=-1
+
     for i in range(0,generations):
         print('Generation '+str(i+1))
         genelist=genetools.generation(genelist,subjects,matchDict)
@@ -29,14 +32,23 @@ def main():
         print('Best Score: '+str(best)+', Worst Score: '+str(worst))
         scoreValues['best'].append(best)
         scoreValues['worst'].append(worst)
+        
+        if(neverGood and best==0):
+            neverGood=False
+            firstGood=i+1
+
         with codecs.open('result/'+runID+'/run_'+str(i+1)+'.json', 'w', encoding="utf-8") as outfile:
             json.dump(genelist, outfile, indent=4, sort_keys=True, ensure_ascii=False)
     
     with codecs.open('result/'+runID+'/scores.json', 'w', encoding="utf-8") as outfile:
         json.dump(scoreValues, outfile, indent=4, sort_keys=True, ensure_ascii=False)
 
+    info={}
+    info['firstGood']=firstGood
+    info['gens']=generations
+    info['geneCount']=genes
     with codecs.open('result/'+runID+'/info.json', 'w', encoding="utf-8") as outfile:
-        outfile.write('{ \"runCount\": '+str(generations)+' }')
+        json.dump(info, outfile, indent=4, sort_keys=True, ensure_ascii=False)
 
 if __name__=='__main__':
     main()

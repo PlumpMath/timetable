@@ -43,13 +43,29 @@ function dayString(num) {
             return 'fri';
     }
 }
+function dayStringKor(num) {
+    switch(Math.floor(num/classPerDay)) {
+        case 0:
+            return '월';
+        case 1:
+            return '화';
+        case 2:
+            return '수';
+        case 3:
+            return '목';
+        case 4:
+            return '금';
+    }
+}
 function drawGene(no) {
     clearTable();
-    //[{"genePairs":{"1":[0,7],"2":[18,25],"3":[27,34],"4":[37,44],"5":[37,44],"6":[9,16]},"geneScore":16},{"genePairs":{"1":[36,43],"2":[19,26],"3":[37,44],"4":[27,34],"5":[1,8],"6":[10,17]},"geneScore":21},{"genePairs":{"1":[19,26],"2":[0,7],"3":[9,16],"4":[10,17],"5":[18,25],"6":[9,16]},"geneScore":21},{"genePairs":{"1":[9,16],"2":[37,44],"3":[19,26],"4":[19,26],"5":[36,43],"6":[37,44]},"geneScore":30},{"genePairs":{"1":[37,44],"2":[9,16],"3":[36,43],"4":[27,34],"5":[28,35],"6":[36,43]},"geneScore":35},{"genePairs":{"1":[36,43],"2":[18,25],"3":[27,34],"4":[27,34],"5":[1,8],"6":[9,16]},"geneScore":16},{"genePairs":{"1":[0,7],"2":[19,26],"3":[37,44],"4":[27,34],"5":[1,8],"6":[10,17]},"geneScore":7},{"genePairs":{"1":[9,16],"2":[0,7],"3":[19,26],"4":[10,17],"5":[36,43],"6":[9,16]},"geneScore":14},{"genePairs":{"1":[19,26],"2":[0,7],"3":[9,16],"4":[10,17],"5":[36,43],"6":[37,44]},"geneScore":14}]
     myGene=gene[parseInt(no)].genePairs;
+    $('#div-gene-summary-title').html('유전자 정보 - '+(no+1).toString()+'번 유전자');
+    $('#div-gene-summary').html('<h4>점수: '+gene[parseInt(no)].geneScore+'<h4/>');
     for(var cl in myGene) {
         console.log();
         var ds=dayString(myGene[cl][0]),myColor=randomColor({luminosity: 'dark'}),cname=input["subjects"][cl].name;
+        $('#div-gene-summary').html($('#div-gene-summary').html()+"<p class='p-table-class' style='font-weight: bold; color: "+myColor+";'>"+cname+' ('+dayStringKor(myGene[cl][0])+' '+(myGene[cl][0]%classPerDay)+'~'+(myGene[cl][1]%classPerDay)+")</p>");
         for(var i=(myGene[cl][0]%classPerDay);i<=(myGene[cl][1]%classPerDay);i++) {
             $('#tt-'+ds+'-'+i.toString()).html($('#tt-'+ds+'-'+i.toString()).html()+"<p class='p-table-class' style='font-weight: bold; color: "+myColor+";' data-id="+cl+">"+cname+"</p>");
         }

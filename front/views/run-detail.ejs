@@ -9,7 +9,7 @@
 
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
-        ['Generation', 'Best', 'Worst'],
+        ['세대', '최고', '최악'],
         <% for(i=0;i<scores['best'].length;i++) {%>
           [<%=i+1%>,<%=scores['best'][i]%>,<%=scores['worst'][i]%>],  
         <%} %>
@@ -37,11 +37,30 @@
             <h1><%=title%></h1>
         </div>
         <div class="row">
-            <div class="lead">
-              <p>세대 수: <%=info['runCount']%></p>
-              <p>학생 수: <%=Object.keys(input['people']).length%></p>
-              <p>수업 수: <%=Object.keys(input['subjects']).length%></p>
-            </div>
+          <table class="table table-striped" id="table-info">
+              <tbody>
+                  <tr>
+                      <th style="width: 20%" scope="row">세대 수</th>
+                      <td><%=info['gens']%></td>
+                  </tr>
+                  <tr>
+                      <th style="width: 20%" scope="row">학생 수</th>
+                      <td><%=Object.keys(input['people']).length%></td>
+                  </tr>
+                  <tr>
+                      <th style="width: 20%" scope="row">수업 수</th>
+                      <td><%=Object.keys(input['subjects']).length%></td>
+                  </tr>
+                  <tr>
+                      <th style="width: 20%" scope="row">세대당 유전자 수</th>
+                      <td><%=info['geneCount']%></td>
+                  </tr>
+                  <tr>
+                      <th style="width: 20%" scope="row">정답 도달 세대</th>
+                      <td><%=info['firstGood']%></td>
+                  </tr>
+              </tbody>
+          </table>
         </div>
         <p></p>
         <div class="row">

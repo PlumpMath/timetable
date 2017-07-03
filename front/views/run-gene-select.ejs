@@ -14,9 +14,9 @@
         </div>
         <p></p>
         <div class="row">
-            <h3>총 <%=info['runCount']%>세대</h3>
+            <h3>총 <%=info['gens']%>세대</h3>
         </div>
-        <%for(var i=1;i<=Number(info['runCount']);i++) {%>
+        <%for(var i=1;i<=Number(info['gens']);i++) {%>
             <%if(i%12==1) {%><div class="row"><%}%>
                 <div class="col col-md-1">
                     <button type="button" class="btn btn-primary btn-select" onclick="location.href='<%='/run-gene/'+id+'/'+i%>';"><%=i%>세대</button>

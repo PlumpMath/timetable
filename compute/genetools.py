@@ -58,16 +58,13 @@ def generation(genes,subjects,matchDict):
     for i in range(0,len(genes)):
         genes[i].geneScore=scores[i]
     genes.sort(key=operator.attrgetter('geneScore'))
-    best=genes[0].geneScore
-    worst=genes[-1].geneScore
-    print('Best Score: '+str(best)+', Worst Score: '+str(worst))
     pairs=genes[0:int(len(genes)/2)]
     for i in range(0,int(len(genes)/4)):
         np1,np2=newPairs(genes[2*i],genes[2*i+1],subjects,matchDict)
         pairs.extend([np1,np2])
     if(len(pairs)%2==1):
         pairs.append(genes[0])
-    return pairs,best,worst
+    return pairs
     
 def newPairs(gene1,gene2,subjects,matchDict):
     mg1=copy.deepcopy(gene1)

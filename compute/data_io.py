@@ -12,7 +12,6 @@ def loadJSON(filePath='data_temp.json'):
     subjects={}
     people=[]
     for sub in inp['subjects']:
-        print(inp['subjects'][sub]['name'])
         subjects[sub]=subject(id=sub,name=inp['subjects'][sub]['name'],len=inp['subjects'][sub]['len']) 
     for cl in inp['people']:
         cl.sort()

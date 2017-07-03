@@ -1,4 +1,4 @@
-import numpy,re,random,os,json,codecs
+import numpy,re,random,os,json,codecs,operator
 import gene,user,genetools,jsonEncoder
 import data_io as dio
 from user import person
@@ -22,7 +22,11 @@ def main():
     
     for i in range(0,generations):
         print('Generation '+str(i+1))
-        genelist,best,worst=genetools.generation(genelist,subjects,matchDict)
+        genelist=genetools.generation(genelist,subjects,matchDict)
+        genelist.sort(key=operator.attrgetter('geneScore'))
+        best=genelist[0].geneScore
+        worst=genelist[-1].geneScore
+        print('Best Score: '+str(best)+', Worst Score: '+str(worst))
         scoreValues['best'].append(best)
         scoreValues['worst'].append(worst)
         with codecs.open('result/'+runID+'/run_'+str(i+1)+'.json', 'w', encoding="utf-8") as outfile:

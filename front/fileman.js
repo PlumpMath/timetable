@@ -23,5 +23,12 @@ module.exports = {
                 });
             });
         });
+    },
+    genGene: function(id, gen, callback) {
+        fs.readFile('./../compute/result/'+id+'/run_'+gen+'.json', 'utf8', function (err, data) {
+            if (err) throw err;
+            info = JSON.parse(data);
+            callback(info);
+        });
     }
 };

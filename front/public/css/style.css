@@ -23,3 +23,11 @@ body {
 #content {
   margin-top: 70px;
 }
+.btn-select {
+  display: block;
+  width: 80px;
+  margin: 0 auto;
+}
+.div-gene-info-sum {
+  height: 150px;
+}

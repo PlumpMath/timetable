@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <%- include head.ejs %>
+  <script>var id='<%=id%>'</script>
+  <body>
+    <%- include nav.ejs %>
+    <div id="content" class="container">
+      <div class="container">
+        <div class="row row-menu">
+          <button type="button" class="btn btn-primary btn-list" onclick="location.href='/run-detail/<%=id%>'">< 돌아가기</button>
+        </div>
+        <div class="row">
+            <h1><%=title%></h1>
+        </div>
+        <p></p>
+        <div class="row">
+            <h3>총 <%=info['runCount']%>세대</h3>
+        </div>
+        <%for(var i=1;i<=Number(info['runCount']);i++) {%>
+            <%if(i%12==1) {%><div class="row"><%}%>
+                <div class="col col-md-1">
+                    <button type="button" class="btn btn-primary btn-select" onclick="location.href='<%='/run-gene/'+id+'/'+i%>';"><%=i%>세대</button>
+                </div>
+            <%if(i%12==0) {%></div><%}%>
+        <%}%>
+    </div>
+    <%- include tail.ejs %>
+  </body>
+</html>

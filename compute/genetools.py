@@ -4,7 +4,7 @@ from gene import gene
 from user import person
 import operator,copy
 
-classesPerDay = 9
+classesPerDay = 12
 mutationRate = 0.05
 
 def randomPairs(subjects):
@@ -65,7 +65,7 @@ def generation(genes,subjects,matchDict):
     for i in range(0,int(len(genes)/4)):
         np1,np2=newPairs(genes[2*i],genes[2*i+1],subjects,matchDict)
         pairs.extend([np1,np2])
-    if(len(pairs)%2==0):
+    if(len(pairs)%2==1):
         pairs.append(genes[0])
     return pairs,best,worst
     

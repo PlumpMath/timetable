@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <%- include head.ejs %>
+  <script>
+    var id='<%=id%>',gen='<%=gen%>';
+  </script>
+  <body>
+    <%- include nav.ejs %>
+    <div id="content" class="container">
+      <div class="container">
+        <div class="row row-menu">
+          <button type="button" class="btn btn-primary btn-list" onclick="location.href='/run-gene/<%=id%>/select'">< 돌아가기</button>
+        </div>
+        <div class="row">
+            <h1><%=title%></h1>
+        </div>
+        <p></p>
+        <div class="row">
+            <h3><%=info.length%>개 유전자</h3>
+        </div>
+        <div class="row div-gene-info-sum">
+            유전자를 선택해주세요!
+        </div>
+        <div class="row div-gene-info">
+            <div class="col-xs-8">
+              <table class="table" id="tt">
+                <thead>
+                  <tr>
+                      <th></th>
+                      <th>월</th>
+                      <th>화</th>
+                      <th>수</th>
+                      <th>목</th>
+                      <th>금</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%for(var i=1;i<13;i++) {%>
+                    <tr style="height: 80px">
+                      <th style="width: 10%"><%=i%>교시</th>
+                      <td class="timetable-item" id="tt-mon-<%=i%>" data-day="0" data-period="<%=i%>"></td>
+                      <td class="timetable-item" id="tt-tue-<%=i%>" data-day="1" data-period="<%=i%>"></td>
+                      <td class="timetable-item" id="tt-wed-<%=i%>" data-day="2" data-period="<%=i%>"></td>
+                      <td class="timetable-item" id="tt-thu-<%=i%>" data-day="3" data-period="<%=i%>"></td>
+                      <td class="timetable-item" id="tt-fri-<%=i%>" data-day="4" data-period="<%=i%>"></td>
+                    </tr>
+                  <%}%>
+                </tbody>
+              </table>
+            </div>
+            <div class="col-xs-4">
+              <% for(i=0;i<info.length;i++) { %> 
+                <div class="div-runitem">
+                  <button type="button" class="btn btn-link btn-gene-list" data-id="<%=i+1%>"><%=i+1%>번 유전자 - 점수 <%=info[i].geneScore%></button>
+                </div>  
+              <%} %>
+            </div>
+        </div>
+        <p></p>
+      </div>
+    </div>
+    <script src="/static/js/randomcolor.min.js"></script>
+    <script src="/static/js/run-gene.js"></script>
+    <%- include tail.ejs %>
+  </body>
+</html>

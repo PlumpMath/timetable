@@ -3,7 +3,7 @@
   <%- include head.ejs %>
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
-    var runID=<%=id%>
+    var runID='<%=id%>'
     google.charts.load('current', {'packages':['corechart','line']});
     google.charts.setOnLoadCallback(drawChart);
 
@@ -31,7 +31,7 @@
         <div class="row row-menu">
           <button type="button" class="btn btn-primary btn-list" onclick="location.href=/run-list/">< 돌아가기</button>
           <button type="button" class="btn btn-success btn-list" onclick="location.href='/run-input/<%=id%>'">입력 데이터</button>
-          <button type="button" class="btn btn-warning btn-list" onclick="location.href='/gene-list/<%=id%>'">유전자 정보</button>
+          <button type="button" class="btn btn-warning btn-list" onclick="location.href='/run-gene/<%=id%>/select'">유전자 정보</button>
         </div>
         <div class="row">
             <h1><%=title%></h1>

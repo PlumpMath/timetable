@@ -1,5 +1,6 @@
 import random
 from sub import subject 
+from settings import *
 
 class person:
     def __init__(self,name='',classes=[]):

@@ -2,15 +2,18 @@
     "subjects": {
         "1" :{
             "name": "수업1",
-            "len": 8
+            "len": 8,
+            "timeConstraints": [[0,11],[48,59]]
         },
         "2": {
             "name": "수업2",
-            "len": 8
+            "len": 8,
+            "timeConstraints": [[12,23],[36,47]]
         },
         "3": {
             "name": "수업3",
-            "len": 8
+            "len": 8,
+            "timeConstraints": [[25,32]]
         },
         "4": {
             "name": "수업4",

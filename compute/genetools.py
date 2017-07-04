@@ -2,10 +2,9 @@ import random as rand
 from sub import subject
 from gene import gene
 from user import person
-import operator,copy
+from settings import *
+import operator, copy
 
-#최대 교시 수
-classesPerDay = 12
 #돌연변이 비율
 mutationRate = 0.05
 
@@ -17,13 +16,14 @@ def randomPairs(subjects):
     #교시는 0-indexed
     for subkey in subjects.keys():
         subject = subjects[subkey]
-        #요일 무작위 선택. 월:0~금:4 이므로 [0,5)에서 무작위 선택
-        randDay=rand.randrange(0,5)
+        #교시 범위에서 하나를 무작위로 선택
+        randPer=rand.randrange(0,len(subject.timeConstraints))
         #시작하는 교시 선택. 끝나는 시간이 classPerDay미만이므로 [0,classesPerDay+1-(수업 길이))로 선택
-        randTime=rand.randrange(0,classesPerDay+1-subject.len) #9교시까지
+        randLen=subject.timeConstraints[randPer][1]-subject.timeConstraints[randPer][0]+1
+        randTime=rand.randrange(0,randLen-subject.len+1) #9교시까지
         #16번줄의 설명처럼 쌍 생성, 삽입.
-        startTime=randDay*classesPerDay+randTime
-        endTime=randDay*classesPerDay+randTime+subject.len-1
+        startTime=subject.timeConstraints[randPer][0]+randTime
+        endTime=subject.timeConstraints[randPer][0]+randTime+subject.len-1
         #(수업 ID,(시작시간,끝시간)) 형식의 튜플
         ret.append((subject.id,(startTime,endTime)))
     return ret

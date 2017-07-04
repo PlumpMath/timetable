@@ -65,8 +65,8 @@ function drawGene(no) {
     for(var cl in myGene) {
         console.log();
         var ds=dayString(myGene[cl][0]),myColor=randomColor({luminosity: 'dark'}),cname=input["subjects"][cl].name;
-        $('#div-gene-summary').html($('#div-gene-summary').html()+"<p class='p-table-class' style='font-weight: bold; color: "+myColor+";'>"+cname+' ('+dayStringKor(myGene[cl][0])+' '+(myGene[cl][0]%classPerDay)+'~'+(myGene[cl][1]%classPerDay)+")</p>");
-        for(var i=(myGene[cl][0]%classPerDay);i<=(myGene[cl][1]%classPerDay);i++) {
+        $('#div-gene-summary').html($('#div-gene-summary').html()+"<p class='p-table-class' style='font-weight: bold; color: "+myColor+";'>"+cname+' ('+dayStringKor(myGene[cl][0])+' '+(myGene[cl][0]%classPerDay+1)+'~'+(myGene[cl][1]%classPerDay+1)+")</p>");
+        for(var i=(myGene[cl][0]%classPerDay+1);i<=(myGene[cl][1]%classPerDay+1);i++) {
             $('#tt-'+ds+'-'+i.toString()).html($('#tt-'+ds+'-'+i.toString()).html()+"<p class='p-table-class' style='font-weight: bold; color: "+myColor+";' data-id="+cl+">"+cname+"</p>");
         }
     }                    

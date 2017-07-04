@@ -17,6 +17,23 @@
             <h3>수업</h3>
         </div>
         <div class="row">
+            <%
+            classPerDay=12
+            function dayStringKor(num) {
+                switch(Math.floor(num/classPerDay)) {
+                    case 0:
+                        return '월';
+                    case 1:
+                        return '화';
+                    case 2:
+                        return '수';
+                    case 3:
+                        return '목';
+                    case 4:
+                        return '금';
+                }
+            }
+            %>
             <%for(var key of Object.keys(input['subjects'])) {%>
                 <table class="table" id="c<%=input['subjects'][key]['id']%>">
                     <thead>
@@ -33,6 +50,14 @@
                         <tr>
                             <th style="width: 20%" scope="row">수업 길이</th>
                             <td><%=input['subjects'][key]['len']%></td>
+                        </tr>
+                        <tr>
+                            <th style="width: 20%" scope="row">가능 시간</th>
+                            <td>
+                                <%for(time of input['subjects'][key]['timeConstraints']) {%>
+                                    <%=dayStringKor(time[0])%> <%=time[0]%12+1%>~<%=time[1]%12+1%>교시 
+                                <%}%>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

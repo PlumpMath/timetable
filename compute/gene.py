@@ -1,6 +1,7 @@
 import random as rand
 import json
 from sub import subject
+from settings import *
 
 class gene:
     def __init__(self,pairs):

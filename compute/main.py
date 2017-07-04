@@ -3,6 +3,7 @@ import gene,user,genetools,jsonEncoder
 import data_io as dio
 from user import person
 from sub import subject
+from settings import *
 
 generations=100
 genes=10 #짝수로 맞추기

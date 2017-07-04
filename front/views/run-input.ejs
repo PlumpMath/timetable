@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
   <%- include head.ejs %>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <script>var id='<%=id%>'</script>
   <body>
     <%- include nav.ejs %>
@@ -59,6 +60,10 @@
                                 <%}%>
                             </td>
                         </tr>
+                        <tr>
+                            <th style="width: 20%" scope="row">강의실</th>
+                            <td><a href="#r<%=input['rooms'][input['subjects'][key]['room']]['id']%>"><%=input['rooms'][input['subjects'][key]['room']]['name']%></a></td>
+                        </tr>
                     </tbody>
                 </table>
             <%}%>
@@ -90,9 +95,32 @@
             <%}%>
         </div>
         <p></p>
+        <div class="row">
+            <h3>교실</h3>
+        </div>
+        <div class="row">
+            <%for(var key of Object.keys(input['rooms'])) {%>
+                <table class="table" id="r<%=input['rooms'][key]['id']%>">
+                    <thead>
+                        <tr>
+                            <th><%=input['rooms'][key]["name"]%></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th style="width: 20%" scope="row">ID</th>
+                            <td><%=input['rooms'][key]['id']%></td>
+                        </tr>
+                    </tbody>
+                </table>
+            <%}%>
+        </div>
       </div>
     </div>
-    <script src="/static/js/input-detail.js"></script>
+    <!-- Return to Top -->
+    <a href="javascript:" id="return-to-top"><i class="icon-chevron-up"></i></a>
     <%- include tail.ejs %>
+    <script src="/static/js/input-detail.js"></script>
   </body>
 </html>

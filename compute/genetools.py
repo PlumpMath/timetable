@@ -1,7 +1,5 @@
 import random as rand
-from sub import subject
-from gene import gene
-from user import person
+from objs import *
 from settings import *
 import operator, copy
 

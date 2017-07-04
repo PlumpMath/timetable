@@ -57,7 +57,9 @@
                   </tr>
                   <tr>
                       <th style="width: 20%" scope="row">정답 도달 세대</th>
-                      <td><%=info['firstGood']%></td>
+                      <td>
+                        <div class="<%=info['firstGood']==-1?'text-danger':'text-success'%>"><%=info['firstGood']==-1?'도달 못함':info['firstGood']%></div>
+                      </td>
                   </tr>
               </tbody>
           </table>

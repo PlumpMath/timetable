@@ -49,11 +49,14 @@ module.exports = function(app) {
       });
     } else {
       fileman.genGene(req.params.id, req.params.gen, function(info) {
-        res.render('run-gene', {
-          title: req.params.id+'-'+req.params.gen+'세대',
-          id: req.params.id,
-          gen: req.params.gen,
-          info: info
+        fileman.runInfo(req.params.id, function(k,meta,scores) {
+          res.render('run-gene', {
+            title: req.params.id+'-'+req.params.gen+'세대',
+            id: req.params.id,
+            gen: req.params.gen,
+            info: info,
+            meta: meta
+          });
         });
       });
     }

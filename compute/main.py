@@ -1,25 +1,24 @@
 import numpy,re,random,os,json,codecs,operator
-import gene,user,genetools,jsonEncoder
+import genetools,jsonEncoder
 import data_io as dio
-from user import person
-from sub import subject
+from objs import *
 from settings import *
 
 generations=100
-genes=10 #짝수로 맞추기
+genes=4 #짝수로 맞추기
 
 def main():
     runID="%8x"%random.getrandbits(32)
     print('Run ID '+runID)
     if not os.path.exists('result/'+runID):
         os.makedirs('result/'+runID)
-    subjects,people=dio.loadJSON()
+    subjects,people,rooms=dio.loadJSON()
     genelist=genetools.randomGenes(genes,subjects)
-    matchDict=user.subjectMatchDict(people,subjects)
+    matchDict=subjectMatchDict(people,subjects)
     scoreValues={"best":[],"worst":[]}
 
     with codecs.open('result/'+runID+'/input.json', 'w', encoding="utf-8") as outfile:
-        json.dump({"subjects":subjects, "people":people}, outfile, indent=4, sort_keys=True, ensure_ascii=False)
+        json.dump({"subjects":subjects, "people":people, "rooms":rooms}, outfile, indent=4, sort_keys=True, ensure_ascii=False)
     
     neverGood=True
     firstGood=-1

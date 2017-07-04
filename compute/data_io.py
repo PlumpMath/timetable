@@ -1,6 +1,5 @@
 import json,sys
-from sub import subject
-from user import person
+from objs import *
 from settings import *
 
 def loadJSON(filePath='data_temp.json'):
@@ -12,6 +11,7 @@ def loadJSON(filePath='data_temp.json'):
     inp=json.loads(inp)
     subjects={}
     people=[]
+    rooms={}
     for sub in inp['subjects']:
         tc=[]
         tc2=[]
@@ -31,10 +31,11 @@ def loadJSON(filePath='data_temp.json'):
                 tcClean.append(time)
         if(len(tcClean)==0):
             raise ValueError('A timeConstraints for a subject has no valid time periods.')
-        subjects[sub]=subject(id=sub,name=inp['subjects'][sub]['name'],len=inp['subjects'][sub]['len'],timeConstraints=tcClean) 
+        subjects[sub]=subject(id=sub,name=inp['subjects'][sub]['name'],len=inp['subjects'][sub]['len'],room=inp['subjects'][sub]['room'],timeConstraints=tcClean) 
     for cl in inp['people']:
         cl.sort()
         people.append(person(classes=cl))
-    return subjects,people
+    for rom in inp['rooms']:
+        rooms[rom]=room(inp['rooms'][rom]['id'],inp['rooms'][rom]['name'])
+    return subjects,people,rooms
     
-loadJSON()

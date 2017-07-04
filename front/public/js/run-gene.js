@@ -64,10 +64,12 @@ function drawGene(no) {
     $('#div-gene-summary').html('<h4>점수: '+gene[parseInt(no)].geneScore+'<h4/>');
     for(var cl in myGene) {
         console.log();
-        var ds=dayString(myGene[cl][0]),myColor=randomColor({luminosity: 'dark'}),cname=input["subjects"][cl].name;
-        $('#div-gene-summary').html($('#div-gene-summary').html()+"<p class='p-table-class' style='font-weight: bold; color: "+myColor+";'>"+cname+' ('+dayStringKor(myGene[cl][0])+' '+(myGene[cl][0]%classPerDay+1)+'~'+(myGene[cl][1]%classPerDay+1)+")</p>");
+        var ds=dayString(myGene[cl][0]),myColor=randomColor({luminosity: 'dark'}),cname=input["subjects"][cl].name,room=input["subjects"][cl].room;
+        $('#div-gene-summary').html($('#div-gene-summary').html()+"<p class='p-table-class' style='font-weight: bold; color: "+myColor+";'>"+cname+' ('+dayStringKor(myGene[cl][0])+' '+(myGene[cl][0]%classPerDay+1)+'~'+(myGene[cl][1]%classPerDay+1)+"교시)</p>");
         for(var i=(myGene[cl][0]%classPerDay+1);i<=(myGene[cl][1]%classPerDay+1);i++) {
             $('#tt-'+ds+'-'+i.toString()).html($('#tt-'+ds+'-'+i.toString()).html()+"<p class='p-table-class' style='font-weight: bold; color: "+myColor+";' data-id="+cl+">"+cname+"</p>");
+            console.log(room);
+            $('#tt-r'+room+'-'+ds+'-'+i.toString()).html($('#tt-r'+room+'-'+ds+'-'+i.toString()).html()+"<p class='p-table-class' style='font-weight: bold; color: "+myColor+";' data-id="+cl+">"+cname+"</p>");
         }
     }                    
 }
@@ -82,3 +84,18 @@ window.onload = function() {
         window.open('/run-input/'+id+'#c'+$(this).data('id'), '_blank');
     });
 }
+
+
+// ===== Scroll to Top ==== 
+$(window).scroll(function() {
+    if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+        $('#return-to-top').fadeIn(200);    // Fade in the arrow
+    } else {
+        $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+    }
+});
+$('#return-to-top').click(function() {      // When arrow is clicked
+    $('body,html').animate({
+        scrollTop : 0                       // Scroll to top of body
+    }, 500);
+});

@@ -29,7 +29,10 @@
     <div id="content" class="container">
       <div class="container">
         <div class="row row-menu">
-          <button type="button" class="btn btn-primary btn-list" onclick="location.href=/run-list/">< 돌아가기</button>
+          <ol class="breadcrumb">
+            <li><a href="/run-list/">결과 목록</a></li>
+            <li class="active"><a href="/run-detail/<%=id%>"><%=id%></a></li>
+          </ol>
           <button type="button" class="btn btn-success btn-list" onclick="location.href='/run-input/<%=id%>'">입력 데이터</button>
           <button type="button" class="btn btn-warning btn-list" onclick="location.href='/run-gene/<%=id%>/select'">유전자 정보</button>
         </div>

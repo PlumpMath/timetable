@@ -7,7 +7,11 @@
     <div id="content" class="container">
       <div class="container">
         <div class="row row-menu">
-          <button type="button" class="btn btn-primary btn-list" onclick="location.href='/run-detail/<%=id%>'">< 돌아가기</button>
+            <ol class="breadcrumb">
+                <li><a href="/run-list/">결과 목록</a></li>
+                <li ><a href="/run-detail/<%=id%>"><%=id%></a></li>
+                <li class="active"><a href="#">세대 선택</a></li>
+            </ol>
         </div>
         <div class="row">
             <h1><%=title%></h1>
